@@ -49,10 +49,10 @@ clean: $(CLEANS)
 	cd $* && $(MIRAGE) configure -t $(MODE) $(MIRAGE_FLAGS)
 
 
-OPAM_REMOTE="git+https://github.com/dune-universe/opam-overlays.git#master"
+OVERLAY_REMOTE="git+https://github.com/dune-universe/opam-overlays.git#master"
 
 %-duniverse: %-configure
-	cd $* && duniverse init --opam-remote=$(OPAM_REMOTE)
+	cd $* && duniverse init --overlay-remote=$(OVERLAY_REMOTE)
 	cd $* && duniverse opam-install -y
 	cd $* && duniverse pull -y
 	cd $* && dune upgrade
